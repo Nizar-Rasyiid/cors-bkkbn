@@ -40,7 +40,6 @@ Route::post('/user-access-survey/showUAS','App\Http\Controllers\UserAccessSurvey
 Route::post('/user-access-survey/store','App\Http\Controllers\UserAccessSurveyController@storeUAS');
 Route::post('/user-access-survey/update','App\Http\Controllers\UserAccessSurveyController@updateUAS');
 Route::post('/user-access-survey/delete','App\Http\Controllers\UserAccessSurveyController@deleteUAS');
-Route::post('/user-access-survey/delete','App\Http\Controllers\UserAccessSurveyController@deleteUA');
 
 // V user
   Route::post('/vuser/showUser',   'App\Http\Controllers\VuserController@showUser');
