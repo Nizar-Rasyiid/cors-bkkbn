@@ -79,9 +79,9 @@ public function showUser(Request $request)
         
         
     $data2 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 2'));
-    $data3 = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 8"));
-    $data4 = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 9"));
-    $alatKB = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 14"));
+    $data3 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 8'));
+    $data4 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 9'));
+    $alatKB = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 14'));
 
     
     try {
