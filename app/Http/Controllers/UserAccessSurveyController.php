@@ -124,31 +124,31 @@ class UserAccessSurveyController extends Controller
         
         $data3 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 8'));
         $data4 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 9'));
-        $data5 = DB::select(DB::raw("SELECT nama_provinsi,nama_kabupaten,nama_kecamatan,nama_kelurahan,nama_rw,nama_rt
+        $data5 = DB::select(DB::raw('SELECT nama_provinsi,nama_kabupaten,nama_kecamatan,nama_kelurahan,nama_rw,nama_rt
         FROM (SELECT id_provinsi,id_kabupaten,id_kecamatan,id_kelurahan,id_rw,id_rt FROM user_access_survey  
-        WHERE 'Periode_Sensus' = ".$data2[0]->value_setting." AND id_user = ".$data[0]["id"].") acc_wilayah  
+        WHERE "Periode_Sensus" = '.$data2[0]->value_setting.' AND "id_user" = '.$data[0]["id"].') acc_wilayah  
         inner join provinsi on acc_wilayah.id_provinsi=provinsi.id_provinsi
         inner join kabupaten on acc_wilayah.id_kabupaten=kabupaten.id_kabupaten
         inner join kecamatan on acc_wilayah.id_kecamatan=kecamatan.id_kecamatan
         inner join kelurahan on acc_wilayah.id_kelurahan=kelurahan.id_kelurahan
         inner join rw on acc_wilayah.id_rw=rw.id_rw
-        inner join rt on acc_wilayah.id_rw=rt.id_rt"
+        inner join rt on acc_wilayah.id_rw=rt.id_rt'
         ));
-        $wilayah = DB::select(DB::raw("SELECT acc_rt.id_provinsi,acc_rt.id_kabupaten,acc_rt.id_kecamatan,acc_rt.id_kelurahan,acc_rt.id_rw
+        $wilayah = DB::select(DB::raw('SELECT acc_rt.id_provinsi,acc_rt.id_kabupaten,acc_rt.id_kecamatan,acc_rt.id_kelurahan,acc_rt.id_rw
          from 
         (SELECT id_provinsi,id_kabupaten,id_kecamatan,id_kelurahan,id_rw,id_rt FROM 
         user_access_survey WHERE
-         id_user = ".$data[0]["id"]." AND
-         Periode_Sensus = ".$data2[0]->value_setting.") 
+         "id_user" = '.$data[0]["id"].' AND
+         "Periode_Sensus" = '.$data2[0]->value_setting.') 
         acc_rt INNER JOIN
          rt on 
          acc_rt.id_rt=rt.id_rt 
-         GROUP BY acc_rt.id_provinsi,acc_rt.id_kabupaten,acc_rt.id_kecamatan,acc_rt.id_kelurahan,acc_rt.id_rw "));
-         $rt = DB::select(DB::raw("SELECT nama_rt,acc_rt.id_rt
+         GROUP BY acc_rt.id_provinsi,acc_rt.id_kabupaten,acc_rt.id_kecamatan,acc_rt.id_kelurahan,acc_rt.id_rw '));
+         $rt = DB::select(DB::raw('SELECT nama_rt,acc_rt.id_rt
          FROM (SELECT id_rt FROM user_access_survey  
-         WHERE Periode_Sensus = ".$data2[0]->value_setting." AND id_rw = ".$wilayah[0]->id_rw.") acc_rt INNER JOIN
+         WHERE "Periode_Sensus" = '.$data2[0]->value_setting.' AND "id_rw" = '.$wilayah[0]->id_rw.') acc_rt INNER JOIN
          rt on 
-         acc_rt.id_rt=rt.id_rt "
+         acc_rt.id_rt=rt.id_rt '
          ));
          
          $agama = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 4'));
