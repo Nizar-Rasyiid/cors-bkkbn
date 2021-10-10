@@ -116,17 +116,17 @@ class UserAccessSurveyController extends Controller
         
         $data = new UserAccessSurvey();
     
-        $data2 = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 2"));
+        $data2 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 2'));
         $data =  $data->select('Password','UserName','NamaLengkap','Jabatan','NIK','Email','Alamat','id')
         ->from('v_user')
         ->where(['UserName'=>$UserName,
         'Password'=>md5($password)])->get();
         
-        $data3 = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 8"));
-        $data4 = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 9"));
+        $data3 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 8'));
+        $data4 = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 9'));
         $data5 = DB::select(DB::raw("SELECT nama_provinsi,nama_kabupaten,nama_kecamatan,nama_kelurahan,nama_rw,nama_rt
         FROM (SELECT id_provinsi,id_kabupaten,id_kecamatan,id_kelurahan,id_rw,id_rt FROM user_access_survey  
-        WHERE Periode_Sensus = ".$data2[0]->value_setting." AND id_user = ".$data[0]["id"].") acc_wilayah  
+        WHERE 'Periode_Sensus' = ".$data2[0]->value_setting." AND id_user = ".$data[0]["id"].") acc_wilayah  
         inner join provinsi on acc_wilayah.id_provinsi=provinsi.id_provinsi
         inner join kabupaten on acc_wilayah.id_kabupaten=kabupaten.id_kabupaten
         inner join kecamatan on acc_wilayah.id_kecamatan=kecamatan.id_kecamatan
@@ -151,14 +151,14 @@ class UserAccessSurveyController extends Controller
          acc_rt.id_rt=rt.id_rt "
          ));
          
-         $agama = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 4"));
-         $status_nikah = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 3"));
-         $jenis_kelamin = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 1"));
-         $kewarganegaraan = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 10"));
-         $pendidikan = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 11"));
-         $status_dalam_keluarga = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 12"));
-         $pekerjaan = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 13"));
-         $alatKB = DB::select(DB::raw("SELECT * FROM setting WHERE Id_kelompok_data = 14"));
+         $agama = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 4'));
+         $status_nikah = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 3'));
+         $jenis_kelamin = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 1'));
+         $kewarganegaraan = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 10'));
+         $pendidikan = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 11'));
+         $status_dalam_keluarga = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 12'));
+         $pekerjaan = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 13'));
+         $alatKB = DB::select(DB::raw('SELECT * FROM setting WHERE "Id_kelompok_data" = 14'));
     
         
         try {
